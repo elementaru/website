@@ -1,5 +1,7 @@
 This website is built with [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+It can be viewed at [https://elementaru.com](https://elementaru.com)
+
 ## Development
 
 First, run the development server:
