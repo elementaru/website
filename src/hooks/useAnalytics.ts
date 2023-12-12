@@ -26,17 +26,21 @@ function useAnalytics() {
 
     const trackPageView = async () => {
       const action = {
-        name: events.VIEW_PAGE,
-        userId: "",
-        anonymousId,
-        timestamp: Date.now(),
-        properties: {
-          path: pathname,
+        event: {
+          name: events.VIEW_PAGE,
+          userId: "",
+          anonymousId,
+          timestamp: Date.now(),
+          properties: {
+            path: pathname,
+          },
         },
       };
-      console.log(action);
-      fetch(process.env.API_URL || "", {
+      fetch(process.env.NEXT_PUBLIC_API_URL || "", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(action),
       });
       setPrevious(pathname);
@@ -45,21 +49,25 @@ function useAnalytics() {
 
     const trackAttribution = async () => {
       const action = {
-        name: events.ATTRIBUTE_VISIT,
-        userId: "",
-        anonymousId: uuidv4(),
-        timestamp: Date.now(),
-        properties: {
-          source,
-          medium,
-          campaign,
-          term,
-          content,
+        event: {
+          name: events.ATTRIBUTE_VISIT,
+          userId: "",
+          anonymousId: uuidv4(),
+          timestamp: Date.now(),
+          properties: {
+            source,
+            medium,
+            campaign,
+            term,
+            content,
+          },
         },
       };
-      console.log(action);
-      fetch(process.env.API_URL || "", {
+      fetch(process.env.NEXT_PUBLIC_API_URL || "", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(action),
       });
       router.replace(pathname, undefined);
