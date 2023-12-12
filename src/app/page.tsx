@@ -1,3 +1,6 @@
+"use client";
+
+import Link from "next/link";
 import ThemeImage from "@/components/theme-image";
 
 function Home() {
@@ -6,10 +9,10 @@ function Home() {
       <div className="flex flex-col items-center">
         <ThemeImage
           srcDark="/logo/elementaru-logo-dark.svg"
-          srcLight="/logo/elementaru-logo-dark.svg"
+          srcLight="/logo/elementaru-logo-light.svg"
           alt="Next.js Logo"
-          width={883 / 2}
-          height={116 / 2}
+          width={500}
+          height={66}
           priority={true}
         />
         <a className="m-8" href="mailto:laurynas@elementaru.com">

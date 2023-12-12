@@ -1,18 +1,32 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+"use client";
+
+import { useEffect } from "react";
+import localFont from "next/font/local";
 import "./globals.css";
+import useAnalytics from "@/hooks/useAnalytics";
+import Toggle from "@/components/toggle";
+import { useDarkMode } from "@/hooks/useDarkMode";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Elementaru",
-  description: "Freelance IT Solutions Architect and RPA Consultant",
-};
+const monaco = localFont({ src: "./Monaco.ttf" });
 
 function RootLayout({ children }: { children: React.ReactNode }) {
+  useAnalytics();
+  const { isDarkMode } = useDarkMode();
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("darkMode");
+    } else {
+      document.body.classList.remove("darkMode");
+    }
+  }, [isDarkMode]);
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={monaco.className}>
+        {/* <Toggle /> */}
+        {children}
+      </body>
     </html>
   );
 }

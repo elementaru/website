@@ -1,4 +1,3 @@
-import styles from "./theme-image.module.css";
 import Image from "next/image";
 import { clsx } from "clsx";
 
@@ -19,7 +18,7 @@ function ThemeImage(props: Props) {
     <>
       <Image
         src={srcLight}
-        className={clsx([className, styles.imgLight])}
+        className={clsx([className, "imgLight"])}
         alt={alt}
         width={width}
         height={height}
@@ -27,7 +26,7 @@ function ThemeImage(props: Props) {
       />
       <Image
         src={srcDark}
-        className={clsx([className, styles.imgDark])}
+        className={clsx([className, "imgDark"])}
         alt={alt}
         width={width}
         height={height}

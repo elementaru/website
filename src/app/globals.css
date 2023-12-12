@@ -7,19 +7,22 @@ body {
   background: #ffffff;
 }
 
+body.darkMode {
+  color: #ffffff;
+  background: #181818;
+}
+
+.imgLight {
+  display: unset;
+}
+
 .imgDark {
   display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #ffffff;
-    background: #181818;
-  }
-  .imgLight {
-    display: none;
-  }
-  .imgDark {
-    display: unset;
-  }
+body.darkMode .imgLight {
+  display: none;
+}
+body.darkMode .imgDark {
+  display: unset;
 }
