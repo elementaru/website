@@ -31,7 +31,8 @@ export function useLocalStorage<T>(
 
     try {
       const item = window.localStorage.getItem(key);
-      return item ? (parseJSON(item) as T) : initialValue;
+      const valueToReturn = item ? (parseJSON(item) as T) : initialValue;
+      return valueToReturn;
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error);
       return initialValue;
@@ -41,7 +42,6 @@ export function useLocalStorage<T>(
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState<T>(readValue);
-
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
   const setValue: SetValue<T> = useEventCallback((value) => {
@@ -55,7 +55,6 @@ export function useLocalStorage<T>(
     try {
       // Allow value to be a function so we have the same API as useState
       const newValue = value instanceof Function ? value(storedValue) : value;
-
       // Save to local storage
       window.localStorage.setItem(key, JSON.stringify(newValue));
 

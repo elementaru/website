@@ -2,14 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS based color-scheme to prevent blinking */
 body {
   color: #181818;
   background: #ffffff;
-}
-
-body.darkMode {
-  color: #ffffff;
-  background: #181818;
 }
 
 .imgLight {
@@ -17,6 +13,39 @@ body.darkMode {
 }
 
 .imgDark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #ffffff;
+    background: #181818;
+  }
+
+  .imgLight {
+    display: none;
+  }
+  .imgDark {
+    display: unset;
+  }
+}
+
+/* Class based color-scheme from local storage */
+body.darkMode {
+  color: #ffffff;
+  background: #181818;
+}
+
+body.lightMode {
+  color: #181818;
+  background: #ffffff;
+}
+
+body.lightMode .imgLight {
+  display: unset;
+}
+
+body.lightMode .imgDark {
   display: none;
 }
 

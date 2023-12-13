@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import ThemeImage from "@/components/theme-image";
 
 function Home() {

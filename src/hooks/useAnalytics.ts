@@ -5,12 +5,14 @@ import { useLocalStorage } from "./useLocalStorage";
 
 function useAnalytics() {
   const [actions, setActions] = useState<any[]>([]);
-  const [user, setUser] = useState({});
   const [previous, setPrevious] = useState("");
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [anonymousId, setAnonymousId] = useLocalStorage("anonymousId", "NA");
+  const [anonymousId, setAnonymousId] = useLocalStorage(
+    "anonymousId",
+    uuidv4()
+  );
 
   const events = {
     VIEW_PAGE: "view_page",
@@ -25,6 +27,7 @@ function useAnalytics() {
     const content = searchParams.get("utm_content");
 
     const trackPageView = async () => {
+      setAnonymousId(anonymousId);
       const action = {
         event: {
           name: events.VIEW_PAGE,
@@ -48,11 +51,12 @@ function useAnalytics() {
     };
 
     const trackAttribution = async () => {
+      setAnonymousId(anonymousId);
       const action = {
         event: {
           name: events.ATTRIBUTE_VISIT,
           userId: "",
-          anonymousId: uuidv4(),
+          anonymousId,
           timestamp: Date.now(),
           properties: {
             source,
@@ -79,10 +83,6 @@ function useAnalytics() {
 
     if (previous !== pathname && campaign) {
       trackAttribution();
-    }
-
-    if (anonymousId === "NA") {
-      setAnonymousId(uuidv4());
     }
   }, [
     anonymousId,
