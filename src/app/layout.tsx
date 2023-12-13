@@ -25,7 +25,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={monaco.className}>
-        <Toggle />
+        {/* <Toggle /> */}
         {children}
       </body>
     </html>
