@@ -1,5 +1,3 @@
-"use client";
-
 import { DependencyList, EffectCallback, useEffect } from "react";
 
 import { useIsFirstRender } from "./useIsFirstRender";

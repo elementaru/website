@@ -1,32 +1,36 @@
-"use client";
-import { useEffect } from "react";
-import localFont from "next/font/local";
+import type { Metadata } from "next";
+import { ToastContainer } from "react-toastify";
+import { inter, monaco } from "@/app/fonts";
 import "./globals.css";
-import useAnalytics from "@/hooks/useAnalytics";
-import Toggle from "@/components/toggle";
-import { useDarkMode } from "@/hooks/useDarkMode";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Analytics from "@/components/analytics";
+import "react-toastify/dist/ReactToastify.css";
 
-const monaco = localFont({ src: "./Monaco.ttf" });
+export const metadata: Metadata = {
+  title: "IT solutions architect and RPA engineer | Elementaru",
+  description:
+    "Over 20 years of experience IT consulting, business process automation and E-commerce development. Bring your products to market faster!",
+};
 
 function RootLayout({ children }: { children: React.ReactNode }) {
-  useAnalytics();
-  const { isDarkMode } = useDarkMode();
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.remove("lightMode");
-      document.body.classList.add("darkMode");
-    } else {
-      document.body.classList.remove("darkMode");
-      document.body.classList.add("lightMode");
-    }
-  }, [isDarkMode]);
-
   return (
-    <html lang="en">
-      <body className={monaco.className}>
-        {/* <Toggle /> */}
+    <html lang="en" className={`${monaco.variable} ${inter.variable}`}>
+      <body>
+        <Header />
         {children}
+        <Footer />
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+        <Analytics />
       </body>
     </html>
   );

@@ -1,5 +1,3 @@
-"use client";
-
 import { useLocalStorage } from "./useLocalStorage";
 import { useMediaQuery } from "./useMediaQuery";
 import { useUpdateEffect } from "./useUpdateEffect";

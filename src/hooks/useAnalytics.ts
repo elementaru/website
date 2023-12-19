@@ -1,9 +1,13 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import { useLocalStorage } from "./useLocalStorage";
 
 function useAnalytics() {
+  const isEnabled =
+    (process.env.NEXT_PUBLIC_ANALYTICS_ENABLED || "true") === "true";
   const [actions, setActions] = useState<any[]>([]);
   const [previous, setPrevious] = useState("");
   const pathname = usePathname();
@@ -20,6 +24,7 @@ function useAnalytics() {
   };
 
   useEffect(() => {
+    if (isEnabled == false) return;
     const source = searchParams.get("utm_source");
     const medium = searchParams.get("utm_medium");
     const campaign = searchParams.get("utm_campaign");
@@ -88,6 +93,7 @@ function useAnalytics() {
     anonymousId,
     events.ATTRIBUTE_VISIT,
     events.VIEW_PAGE,
+    isEnabled,
     pathname,
     previous,
     router,

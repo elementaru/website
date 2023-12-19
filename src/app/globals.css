@@ -2,56 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary: #704fb3;
+  --color-secondary: #181818;
+  --color-text: #ffffff;
+  --header-height: 88px;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-monaco);
+    @apply my-6 mt-8;
+  }
+
+  h1 {
+    @apply text-4xl leading-normal;
+  }
+
+  h2 {
+    @apply text-3xl leading-normal;
+  }
+
+  h3 {
+    @apply text-xl leading-normal;
+  }
+
+  p {
+    @apply my-4;
+  }
+}
+
 /* CSS based color-scheme to prevent blinking */
 body {
-  color: #181818;
-  background: #ffffff;
+  color: var(--color-text);
+  background: var(--color-secondary);
+  font-family: var(--font-inter);
 }
 
-.imgLight {
-  display: unset;
+.min-h-adjusted {
+  min-height: calc(100vh - var(--header-height));
 }
 
-.imgDark {
-  display: none;
+.timeline li {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #ffffff;
-    background: #181818;
-  }
-
-  .imgLight {
-    display: none;
-  }
-  .imgDark {
-    display: unset;
-  }
+ul.styled {
+  @apply my-4;
 }
 
-/* Class based color-scheme from local storage */
-body.darkMode {
-  color: #ffffff;
-  background: #181818;
+ul.styled li {
+  @apply my-2 leading-loose;
 }
 
-body.lightMode {
-  color: #181818;
-  background: #ffffff;
+ul.styled li::before {
+  content: "";
+  @apply inline-block rounded-full w-2 h-2 mb-0.5 bg-primary mr-4;
 }
 
-body.lightMode .imgLight {
-  display: unset;
+ul.styled-radio li label {
+  @apply block cursor-pointer bg-neutral-800 whitespace-nowrap px-5 py-3 rounded-lg uppercase transition-opacity hover:opacity-80 active:opacity-70;
 }
 
-body.lightMode .imgDark {
-  display: none;
-}
-
-body.darkMode .imgLight {
-  display: none;
-}
-body.darkMode .imgDark {
-  display: unset;
+ul.styled-radio li label.selected {
+  @apply bg-primary opacity-100;
 }
