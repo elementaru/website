@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser";
 import Radio from "./radio";
 import Image from "next/image";
+import services from "@/constants/services";
 
 function ContactForm() {
   const [loading, setLoading] = useState(false);
@@ -54,22 +55,6 @@ function ContactForm() {
     }
   };
 
-  const services = [
-    "IT consulting",
-    "Startup consulting",
-    "Strategic planning",
-    "Process / workflow / data modeling",
-    "Business process automation",
-    "Robotic process automation (RPA)",
-    "IT solution development",
-    "DevOps automation",
-    "E-commerce development",
-    "Ecommerce support",
-    "AI tools integration",
-    "Analytics tools integration",
-    "Marketing tools integration",
-  ];
-
   const budgets = [
     "- 1k EUR",
     "1k - 5k EUR",
@@ -80,7 +65,6 @@ function ContactForm() {
 
   return (
     <form ref={formRef} onSubmit={sendEmail}>
-      <p>Loading {loading}</p>
       <Radio name="service" values={services} label="I'm looking for" />
       <label className="block mt-8 mb-1" htmlFor="name">
         What&apos;s your name?

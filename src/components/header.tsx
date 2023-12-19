@@ -19,8 +19,11 @@ function Header() {
       </Link>
       <nav className="w-full">
         <ul className="flex justify-end">
-          <li className="">
-            <Link href="/contact" className="block p-4">
+          <li className="hidden md:block">
+            <Link
+              href="/contact"
+              className="block p-4 hover:opacity-80 active:opacity-70"
+            >
               Contact
             </Link>
           </li>

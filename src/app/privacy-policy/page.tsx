@@ -14,7 +14,7 @@ function PrivacyPolicy() {
       <p>Last Updated: 2023-12-19</p>
 
       <p>
-        This Privacy Policy explains how Elementaru MB (we) collect, use,
+        This Privacy Policy explains how Elementaru MB (We) collect, use,
         disclose, and protect your information when you use our website{" "}
         <a href="https://elementaru.com">elementaru.com</a> (the
         &quot;Service&quot;). By accessing or using the Service, you agree to
