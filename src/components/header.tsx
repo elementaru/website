@@ -27,7 +27,7 @@ function Header() {
               Contact
             </Link>
           </li>
-          <li className="p-4">
+          <li className="py-4 ml-4">
             <a
               href="https://calendly.com/laurynas-antanavicius/60min"
               target="_blank"
